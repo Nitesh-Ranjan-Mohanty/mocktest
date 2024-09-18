@@ -1,5 +1,6 @@
 import { nodeQuestions } from "./nodeQuestionBank";
 import { webPackQuestions } from "./webPackQuestionBank";
+import { jestQuestions } from "./jestQuestionBank";
 import * as readline from "readline";
 import say from "say";
 
@@ -8,7 +9,7 @@ const rl = readline.createInterface({
   output: process.stdout,
 });
 
-const questions = [...nodeQuestions, ...webPackQuestions];
+const questions = [...nodeQuestions, ...webPackQuestions, ...jestQuestions];
 const topics = [
   "nodejs",
   "typescript",
@@ -24,7 +25,7 @@ const topics = [
 const shuffleArray = <T>(array: T[]): T[] => {
   for (let i = array.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
-    [array[i], array[j]] = [array[j], array[i]]; // Swap elements
+    [array[i], array[j]] = [array[j], array[i]];
   }
   return array;
 };
@@ -95,7 +96,6 @@ const selectTopic = async (): Promise<string> => {
     });
   });
 };
-
 const startTest = async () => {
   console.log("Welcome to the Node.js Mock Test!");
   console.log(
@@ -149,7 +149,7 @@ const startTest = async () => {
   );
 
   // Filter questions based on the selected topic
-  const filteredQuestions = questions.filter((q) => q.topic === selectedTopic);
+  const filteredQuestions = questions.filter((q) => q?.topic === selectedTopic);
 
   // Shuffle the filtered questions
   const shuffledQuestions = shuffleArray(filteredQuestions);
