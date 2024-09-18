@@ -1056,4 +1056,442 @@ export const webPackQuestions: Question[] = [
       "'copy-webpack-plugin' in Webpack copies files from one location to another as part of the build process. This is useful for including static assets or files that need to be present in the output directory but are not processed by Webpack. For example, using `new CopyWebpackPlugin({ patterns: [{ from: 'public', to: 'dist' }] })` copies files from the 'public' directory to the 'dist' directory.",
     topic: "webpack",
   },
+  {
+    id: 171,
+    question: "How can you use the 'url-loader' in Webpack to handle images?",
+    options: [
+      "By inlining small images as base64 URLs and copying larger images to the output directory",
+      "By minifying the image files",
+      "By handling image paths in CSS files",
+      "By optimizing image formats",
+    ],
+    answer:
+      "By inlining small images as base64 URLs and copying larger images to the output directory",
+    explanation:
+      "'url-loader' in Webpack allows you to inline small images as base64 URLs directly in your JavaScript files, while larger images are copied to the output directory. This helps reduce the number of HTTP requests by including smaller images directly in the bundle. For example, setting `{ test: /.(png|jpg|gif)$/, loader: 'url-loader', options: { limit: 8192 } }` will inline images smaller than 8 KB and copy larger images.",
+    topic: "webpack",
+  },
+  {
+    id: 172,
+    question: "What does the 'babel-loader' do in a Webpack configuration?",
+    options: [
+      "It transpiles JavaScript code using Babel to ensure compatibility with different browsers",
+      "It handles image files",
+      "It minifies the output code",
+      "It manages CSS styles",
+    ],
+    answer:
+      "It transpiles JavaScript code using Babel to ensure compatibility with different browsers",
+    explanation:
+      "'babel-loader' is used in Webpack to transpile JavaScript code using Babel. It converts modern JavaScript syntax into code that is compatible with older browsers. For example, if you configure `babel-loader` with `@babel/preset-env`, it will transform ES6+ code into ES5, ensuring broader browser compatibility.",
+    topic: "webpack",
+  },
+  {
+    id: 173,
+    question: "What is the 'webpack-merge' library used for?",
+    options: [
+      "It helps to merge multiple Webpack configurations into one",
+      "It minifies the output code",
+      "It handles CSS and image files",
+      "It manages environment variables",
+    ],
+    answer: "It helps to merge multiple Webpack configurations into one",
+    explanation:
+      "'webpack-merge' is a library used to merge multiple Webpack configuration files into a single configuration. This is useful for managing different environments (e.g., development, production) by splitting configurations into separate files and then merging them as needed. For example, you can merge a common configuration with environment-specific configurations using `webpackMerge.merge(commonConfig, prodConfig)`.",
+    topic: "webpack",
+  },
+  {
+    id: 174,
+    question: "What does the 'resolve.extensions' configuration option do?",
+    options: [
+      "It specifies which file extensions Webpack should resolve",
+      "It handles CSS and image files",
+      "It minifies the output code",
+      "It manages environment variables",
+    ],
+    answer: "It specifies which file extensions Webpack should resolve",
+    explanation:
+      "'resolve.extensions' in Webpack configuration specifies which file extensions should be resolved and considered by Webpack when importing modules. This allows you to omit file extensions in import statements. For example, setting `resolve.extensions: ['.js', '.jsx']` allows you to import JavaScript and JSX files without explicitly specifying their extensions.",
+    topic: "webpack",
+  },
+  {
+    id: 175,
+    question: "How can you configure Webpack to handle TypeScript files?",
+    options: [
+      "By using 'ts-loader' to compile TypeScript files",
+      "By handling TypeScript files directly in the output configuration",
+      "By specifying TypeScript files in the entry configuration",
+      "By using 'babel-loader' with TypeScript presets",
+    ],
+    answer: "By using 'ts-loader' to compile TypeScript files",
+    explanation:
+      "To handle TypeScript files in Webpack, you can use 'ts-loader', which compiles TypeScript files into JavaScript. This loader integrates with Webpack to process TypeScript files as part of the build process. For example, setting `{ test: /.tsx?$/, use: 'ts-loader', exclude: /node_modules/ }` will compile TypeScript files with 'ts-loader'. You will also need to add TypeScript configuration using 'tsconfig.json'.",
+    topic: "webpack",
+  },
+  {
+    id: 176,
+    question: "What does Webpack's 'watch' mode do?",
+    options: [
+      "It automatically recompiles the project when source files change",
+      "It handles CSS and image files",
+      "It minifies the output code",
+      "It manages environment variables",
+    ],
+    answer: "It automatically recompiles the project when source files change",
+    explanation:
+      "'watch' mode in Webpack automatically recompiles the project whenever source files are changed. This is useful during development to see changes in real-time without manually running the build process. For example, running `webpack --watch` will enable watch mode and recompile the project when files are modified.",
+    topic: "webpack",
+  },
+  {
+    id: 177,
+    question:
+      "How can you configure Webpack to generate separate source maps for JavaScript and CSS files?",
+    options: [
+      "By using 'source-map-loader' for JavaScript and 'css-loader' with 'sourceMap' option for CSS",
+      "By setting 'devtool' to 'source-map'",
+      "By using 'style-loader' with 'sourceMap' option for CSS",
+      "By configuring 'source-map' in 'output' section",
+    ],
+    answer:
+      "By using 'source-map-loader' for JavaScript and 'css-loader' with 'sourceMap' option for CSS",
+    explanation:
+      "To generate separate source maps for JavaScript and CSS files, you can use 'source-map-loader' for JavaScript and configure 'css-loader' with the 'sourceMap' option for CSS. For example, configuring `source-map-loader` in the rules array and setting `{ sourceMap: true }` in `css-loader` options will create separate source maps for JavaScript and CSS files.",
+    topic: "webpack",
+  },
+  {
+    id: 178,
+    question: "What is the function of the 'style-loader' in Webpack?",
+    options: [
+      "It injects CSS into the DOM using <style> tags",
+      "It handles image files",
+      "It minifies the output code",
+      "It manages environment variables",
+    ],
+    answer: "It injects CSS into the DOM using <style> tags",
+    explanation:
+      "'style-loader' in Webpack injects CSS into the DOM by adding `<style>` tags. It is often used in conjunction with 'css-loader' to handle CSS files. For example, using `style-loader` with `css-loader` allows you to import CSS files into your JavaScript modules and apply styles directly to the DOM.",
+    topic: "webpack",
+  },
+  {
+    id: 179,
+    question:
+      "How can you use Webpack to split your code into multiple chunks?",
+    options: [
+      "By using 'optimization.splitChunks' configuration",
+      "By configuring 'entry' points in the build process",
+      "By handling CSS and image files separately",
+      "By using 'webpack-merge' to combine configurations",
+    ],
+    answer: "By using 'optimization.splitChunks' configuration",
+    explanation:
+      "'optimization.splitChunks' configuration in Webpack allows you to split your code into multiple chunks. This helps optimize the bundle size and load times by separating vendor code, common code, and dynamically loaded modules into separate chunks. For example, setting `optimization.splitChunks: { chunks: 'all' }` enables code splitting for all types of chunks.",
+    topic: "webpack",
+  },
+  {
+    id: 180,
+    question: "What does the 'webpack-cli' package provide?",
+    options: [
+      "It provides a command-line interface for running Webpack commands",
+      "It handles CSS and image files",
+      "It minifies the output code",
+      "It manages environment variables",
+    ],
+    answer: "It provides a command-line interface for running Webpack commands",
+    explanation:
+      "'webpack-cli' is a package that provides a command-line interface for running Webpack commands. It allows you to execute Webpack-related commands, such as `webpack` and `webpack --config`. This package is essential for running Webpack from the terminal and managing build processes.",
+    topic: "webpack",
+  },
+  {
+    id: 181,
+    question:
+      "How can you use Webpack to include static assets like images or fonts in your build?",
+    options: [
+      "By using loaders like 'file-loader' or 'url-loader'",
+      "By configuring the 'entry' points",
+      "By handling assets directly in the 'output' configuration",
+      "By using 'html-webpack-plugin' for static assets",
+    ],
+    answer: "By using loaders like 'file-loader' or 'url-loader'",
+    explanation:
+      "To include static assets like images or fonts in your Webpack build, you can use loaders such as 'file-loader' or 'url-loader'. These loaders process and handle static assets, copying them to the output directory or inlining them as base64 URLs. For example, using `{ test: /.(png|jpg|gif)$/, use: 'file-loader' }` will copy image files to the output directory and provide URLs for them.",
+    topic: "webpack",
+  },
+  {
+    id: 182,
+    question: "What is the 'html-webpack-plugin' used for?",
+    options: [
+      "It generates an HTML file that includes the Webpack bundles",
+      "It handles CSS and image files",
+      "It minifies the output code",
+      "It manages environment variables",
+    ],
+    answer: "It generates an HTML file that includes the Webpack bundles",
+    explanation:
+      "'html-webpack-plugin' is used to generate an HTML file that includes the Webpack bundles. This plugin simplifies the process of creating an HTML file with the correct `<script>` tags for the Webpack output. For example, configuring `new HtmlWebpackPlugin({ template: './src/index.html' })` will generate an HTML file based on the specified template and automatically include the Webpack bundles.",
+    topic: "webpack",
+  },
+  {
+    id: 183,
+    question: "What does the 'mini-css-extract-plugin' do?",
+    options: [
+      "It extracts CSS into separate files instead of injecting them into the DOM",
+      "It minifies the CSS files",
+      "It handles image files",
+      "It configures how modules are resolved",
+    ],
+    answer:
+      "It extracts CSS into separate files instead of injecting them into the DOM",
+    explanation:
+      "'mini-css-extract-plugin' is used to extract CSS into separate files instead of injecting them into the DOM. This plugin helps in separating CSS from JavaScript, improving caching and performance. For example, configuring `new MiniCssExtractPlugin({ filename: '[name].css' })` will create separate CSS files for each entry point.",
+    topic: "webpack",
+  },
+  {
+    id: 184,
+    question: "How does Webpack handle module resolution?",
+    options: [
+      "By using the 'resolve' configuration options to specify how modules are resolved",
+      "By minifying the output code",
+      "By handling CSS and image files",
+      "By managing environment variables",
+    ],
+    answer:
+      "By using the 'resolve' configuration options to specify how modules are resolved",
+    explanation:
+      "Webpack handles module resolution using the 'resolve' configuration options, which specify how modules are located and resolved. This includes defining file extensions, aliasing paths, and specifying directories. For example, configuring `resolve: { extensions: ['.js', '.jsx'], alias: { '@components': path.resolve(__dirname, 'src/components/') } }` simplifies module imports and defines how modules are resolved.",
+    topic: "webpack",
+  },
+  {
+    id: 185,
+    question: "What is the purpose of the 'banner-plugin' in Webpack?",
+    options: [
+      "It adds a banner to the top of each generated bundle",
+      "It handles CSS and image files",
+      "It minifies the output code",
+      "It manages environment variables",
+    ],
+    answer: "It adds a banner to the top of each generated bundle",
+    explanation:
+      "'banner-plugin' adds a banner to the top of each generated bundle. This is useful for including information like licensing, copyright, or build details in the output files. For example, configuring `new BannerPlugin('My Custom Banner')` will prepend the specified banner text to the top of each generated bundle.",
+    topic: "webpack",
+  },
+  {
+    id: 186,
+    question:
+      "How can you configure Webpack to only include certain files in the build process?",
+    options: [
+      "By using 'include' and 'exclude' options in the module rules",
+      "By configuring 'entry' points",
+      "By handling assets directly in the 'output' configuration",
+      "By using 'html-webpack-plugin' for static assets",
+    ],
+    answer: "By using 'include' and 'exclude' options in the module rules",
+    explanation:
+      "You can configure Webpack to include or exclude certain files in the build process by using 'include' and 'exclude' options in the module rules. For example, configuring `{ test: /.js$/, include: /src/, exclude: /node_modules/ }` ensures that only JavaScript files within the 'src' directory are processed, excluding those in 'node_modules'.",
+    topic: "webpack",
+  },
+  {
+    id: 187,
+    question: "What does the 'file-loader' do in a Webpack configuration?",
+    options: [
+      "It processes files and emits them to the output directory",
+      "It minifies the output code",
+      "It handles CSS and image files",
+      "It configures how modules are resolved",
+    ],
+    answer: "It processes files and emits them to the output directory",
+    explanation:
+      "'file-loader' processes files and emits them to the output directory, providing a URL for the file. It is often used for handling static assets such as images or fonts. For example, configuring `{ test: /.(png|jpg|gif)$/, use: 'file-loader' }` will copy image files to the output directory and return their URLs for use in your code.",
+    topic: "webpack",
+  },
+  {
+    id: 188,
+    question:
+      "What is the purpose of the 'watchOptions' configuration in Webpack?",
+    options: [
+      "It allows you to configure how Webpack watches for file changes",
+      "It handles CSS and image files",
+      "It minifies the output code",
+      "It manages environment variables",
+    ],
+    answer: "It allows you to configure how Webpack watches for file changes",
+    explanation:
+      "'watchOptions' configuration in Webpack allows you to customize how Webpack watches for file changes when in watch mode. You can set options like `aggregateTimeout` (time to wait after changes before rebuilding) and `poll` (polling interval for checking changes). For example, setting `watchOptions: { aggregateTimeout: 300, poll: 1000 }` will rebuild after a 300ms delay and poll for changes every second.",
+    topic: "webpack",
+  },
+  {
+    id: 189,
+    question:
+      "How can you use the 'webpack-dev-server' to serve your application?",
+    options: [
+      "By running 'webpack-dev-server' to provide a development server with live reloading",
+      "By configuring the 'entry' points",
+      "By handling assets directly in the 'output' configuration",
+      "By using 'html-webpack-plugin' for static assets",
+    ],
+    answer:
+      "By running 'webpack-dev-server' to provide a development server with live reloading",
+    explanation:
+      "'webpack-dev-server' provides a development server with live reloading capabilities. It serves the application from memory and reloads the page automatically when source files change. For example, running `webpack-dev-server --open` starts the server and opens your application in the default web browser.",
+    topic: "webpack",
+  },
+  {
+    id: 190,
+    question:
+      "What does the 'optimization.runtimeChunk' configuration option do?",
+    options: [
+      "It controls whether to create a separate runtime chunk for Webpack",
+      "It handles CSS and image files",
+      "It minifies the output code",
+      "It manages environment variables",
+    ],
+    answer:
+      "It controls whether to create a separate runtime chunk for Webpack",
+    explanation:
+      "'optimization.runtimeChunk' configuration option controls whether to create a separate runtime chunk for Webpack. This helps in better caching by separating the runtime code from the main bundle. For example, setting `optimization.runtimeChunk: 'single'` creates a single runtime chunk for all entry points, improving caching efficiency.",
+    topic: "webpack",
+  },
+  {
+    id: 191,
+    question: "How does Webpack handle code splitting?",
+    options: [
+      "By using dynamic imports or 'splitChunks' configuration",
+      "By minifying the output code",
+      "By handling CSS and image files",
+      "By managing environment variables",
+    ],
+    answer: "By using dynamic imports or 'splitChunks' configuration",
+    explanation:
+      "Webpack handles code splitting by using dynamic imports or configuring 'splitChunks'. Dynamic imports allow you to split your code into separate chunks that are loaded on demand. For example, using `import(/* webpackChunkName: 'my-chunk' */ './myModule')` dynamically imports 'myModule'. The 'splitChunks' configuration, such as `{ optimization: { splitChunks: { chunks: 'all' } } }`, splits code into separate chunks automatically.",
+    topic: "webpack",
+  },
+  {
+    id: 192,
+    question: "What does the 'optimization.minimizer' configuration option do?",
+    options: [
+      "It specifies the plugins to use for minifying the output code",
+      "It handles CSS and image files",
+      "It configures how modules are resolved",
+      "It manages environment variables",
+    ],
+    answer: "It specifies the plugins to use for minifying the output code",
+    explanation:
+      "'optimization.minimizer' configuration option specifies the plugins used for minifying the output code. For example, using `optimization: { minimizer: [new TerserPlugin()] }` configures Webpack to use 'TerserPlugin' for JavaScript minification. This helps reduce the bundle size by optimizing and compressing the code.",
+    topic: "webpack",
+  },
+  {
+    id: 193,
+    question: "How can you use Webpack to handle CSS modules?",
+    options: [
+      "By using 'css-loader' with 'modules' option enabled",
+      "By handling CSS files directly in the 'output' configuration",
+      "By configuring 'entry' points",
+      "By using 'html-webpack-plugin' for static assets",
+    ],
+    answer: "By using 'css-loader' with 'modules' option enabled",
+    explanation:
+      "To handle CSS modules in Webpack, you use 'css-loader' with the 'modules' option enabled. This allows you to write modular and scoped CSS. For example, configuring `{ test: /.css$/, use: ['style-loader', { loader: 'css-loader', options: { modules: true } }] }` enables CSS modules in your project.",
+    topic: "webpack",
+  },
+  {
+    id: 194,
+    question:
+      "What is the purpose of the 'resolve.alias' configuration in Webpack?",
+    options: [
+      "It allows you to create shortcuts or aliases for module paths",
+      "It handles CSS and image files",
+      "It minifies the output code",
+      "It manages environment variables",
+    ],
+    answer: "It allows you to create shortcuts or aliases for module paths",
+    explanation:
+      "'resolve.alias' configuration in Webpack allows you to create shortcuts or aliases for module paths. This simplifies imports by defining custom paths. For example, configuring `resolve: { alias: { '@components': path.resolve(__dirname, 'src/components/') } }` lets you use `import Button from '@components/Button'` instead of relative paths.",
+    topic: "webpack",
+  },
+  {
+    id: 195,
+    question: "How can you set up Webpack to handle TypeScript files?",
+    options: [
+      "By using 'ts-loader' or 'babel-loader' with TypeScript presets",
+      "By handling TypeScript files directly in the 'output' configuration",
+      "By configuring 'entry' points",
+      "By using 'html-webpack-plugin' for static assets",
+    ],
+    answer: "By using 'ts-loader' or 'babel-loader' with TypeScript presets",
+    explanation:
+      "To handle TypeScript files in Webpack, you use 'ts-loader' or 'babel-loader' with TypeScript presets. 'ts-loader' directly compiles TypeScript, while 'babel-loader' with TypeScript presets can also handle TypeScript. For example, configuring `{ test: /.ts$/, use: 'ts-loader', exclude: /node_modules/ }` allows Webpack to process TypeScript files.",
+    topic: "webpack",
+  },
+  {
+    id: 196,
+    question: "What does the 'optimization.splitChunks' configuration do?",
+    options: [
+      "It configures code splitting by splitting chunks into separate files",
+      "It handles CSS and image files",
+      "It minifies the output code",
+      "It manages environment variables",
+    ],
+    answer:
+      "It configures code splitting by splitting chunks into separate files",
+    explanation:
+      "'optimization.splitChunks' configuration in Webpack handles code splitting by splitting chunks into separate files. This helps reduce bundle size and improves caching. For example, configuring `optimization: { splitChunks: { chunks: 'all' } }` will split code into separate files based on their usage.",
+    topic: "webpack",
+  },
+  {
+    id: 197,
+    question: "What does the 'devtool' configuration option do in Webpack?",
+    options: [
+      "It controls the generation of source maps for debugging",
+      "It handles CSS and image files",
+      "It minifies the output code",
+      "It manages environment variables",
+    ],
+    answer: "It controls the generation of source maps for debugging",
+    explanation:
+      "'devtool' configuration option controls the generation of source maps, which help in debugging by mapping the compiled code back to the original source. For example, setting `devtool: 'source-map'` generates a full source map file, making it easier to debug the code.",
+    topic: "webpack",
+  },
+  {
+    id: 198,
+    question: "How can you enable source maps in Webpack?",
+    options: [
+      "By setting the 'devtool' option in the Webpack configuration",
+      "By handling source maps directly in the 'output' configuration",
+      "By configuring 'entry' points",
+      "By using 'html-webpack-plugin' for static assets",
+    ],
+    answer: "By setting the 'devtool' option in the Webpack configuration",
+    explanation:
+      "To enable source maps in Webpack, you set the 'devtool' option in the configuration. This controls how source maps are generated, aiding in debugging. For example, configuring `devtool: 'source-map'` will generate source maps that map the compiled code back to the original source files.",
+    topic: "webpack",
+  },
+  {
+    id: 199,
+    question:
+      "What is the purpose of the 'optimization.concatenateModules' option in Webpack?",
+    options: [
+      "It controls whether to concatenate modules into a single bundle",
+      "It handles CSS and image files",
+      "It minifies the output code",
+      "It manages environment variables",
+    ],
+    answer: "It controls whether to concatenate modules into a single bundle",
+    explanation:
+      "'optimization.concatenateModules' option controls whether Webpack should concatenate modules into a single bundle, which can help reduce the number of modules and improve performance. For example, setting `optimization.concatenateModules: true` enables module concatenation to improve runtime performance.",
+    topic: "webpack",
+  },
+  {
+    id: 200,
+    question: "How can you use Webpack to handle SVG files?",
+    options: [
+      "By using 'file-loader' or 'url-loader' to process and include SVG files",
+      "By handling SVG files directly in the 'output' configuration",
+      "By configuring 'entry' points",
+      "By using 'html-webpack-plugin' for static assets",
+    ],
+    answer:
+      "By using 'file-loader' or 'url-loader' to process and include SVG files",
+    explanation:
+      "To handle SVG files in Webpack, you use 'file-loader' or 'url-loader' to process and include them in the build. 'file-loader' emits the SVG files to the output directory and returns their URLs, while 'url-loader' can inline the SVG files as base64 data if they are small enough. For example, configuring `{ test: /.svg$/, use: 'file-loader' }` will handle SVG files appropriately.",
+    topic: "webpack",
+  },
 ];
