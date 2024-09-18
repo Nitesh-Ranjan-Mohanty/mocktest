@@ -1,0 +1,15 @@
+{
+  "name": "learning-node",
+  "version": "1.0.0",
+  "description": "learing node js",
+  "main": "index.ts",
+  "type": "commonjs",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "Nitesh Ranjan Mohanty",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^22.5.5"
+  }
+}
