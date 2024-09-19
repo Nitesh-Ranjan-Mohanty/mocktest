@@ -3,8 +3,9 @@ import { nodeQuestions } from "../questionBank/nodeQuestionBank";
 import { webPackQuestions } from "../questionBank/webPackQuestionBank";
 import { jestQuestions } from "../questionBank/jestQuestionBank";
 import { reactQuestions } from "../questionBank/reactQuesionBank";
+import { sqlQuestions } from "../questionBank/sqlQuesionBank";
 import { shuffleArray } from "../utils/helpers";
-import { marked } from 'marked';
+import { marked } from "marked";
 
 const router = express.Router();
 
@@ -13,6 +14,7 @@ const questions = [
   ...webPackQuestions,
   ...jestQuestions,
   ...reactQuestions,
+  ...sqlQuestions,
 ];
 
 // Middleware to initialize quiz session
@@ -32,7 +34,7 @@ router.use((req, res, next) => {
 // Route to select topic
 router.get("/select-topic", (req, res) => {
   res.render("select-topic", {
-    topics: ["nodejs", "webpack", "jest", "react"],
+    topics: ["nodejs", "webpack", "jest", "react", "sql"],
   });
 });
 
@@ -46,7 +48,7 @@ router.post("/select-topic", (req, res) => {
 
   req.session.quiz.selectedTopic = selectedTopic;
   req.session.quiz.shuffledQuestions = shuffledQuestions;
-  req.session.quiz.currentQuestionIndex = 0;
+  req.session.quiz.currentQuestionIndex = 1;
   req.session.quiz.score = 0;
   req.session.quiz.userAnswers = [];
 
@@ -69,13 +71,17 @@ router.post("/question", (req, res) => {
   const userAnswer = req.body.answer;
   const correctAnswer = req.body.correctAnswer;
   const explanation = req.body.explanation;
+  const example = req.body.example;
 
   // Optionally, store these values in the session or database as needed
-
+  if(userAnswer === correctAnswer) {
+    req.session.quiz.score += 1;
+  }
   res.render("feedback", {
     userAnswer,
     correctAnswer,
-    explanation:marked.parse(explanation),
+    explanation: marked.parse(explanation),
+    example: marked.parse(example),
   });
 });
 

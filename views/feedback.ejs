@@ -192,7 +192,15 @@
             <strong>Explanation:</strong><br />
             <%- explanation %>
         </div>
-        <button class="button" id="nextQuestionButton">Next Question</button>
+        
+        <% if (example) { %>
+            <div class="answer explanation">
+                <strong>Example:</strong><br />
+                <%- example %>
+            </div>
+        <% } %>
+        
+    <button class="button" id="nextQuestionButton">Next Question</button>
     </div>
     <script src="/js/speech.js"></script>
 </body>

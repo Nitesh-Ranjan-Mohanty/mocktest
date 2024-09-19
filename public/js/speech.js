@@ -138,8 +138,8 @@ function markdownToPlainText(html) {
     const explanation = feedbackElement.dataset.explanation;
 
     handleAnswerFeedback(correctAnswer, userAnswer, explanation).then(() => {
-      // nextButton.disabled = false;
-      window.location.href = '/quiz/next-question';
+      nextButton.disabled = false;
+      // window.location.href = '/quiz/next-question';
     });
   }
 

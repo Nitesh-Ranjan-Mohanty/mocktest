@@ -62,8 +62,9 @@
     <div class="container">
         <h2><%= question?.question %></h2>
         <form action="/quiz/question" method="POST">
-            <input type="hidden" name="correctAnswer" value="<%= question.answer %>">
-            <input type="hidden" name="explanation" value="<%= question.explanation %>">
+            <input type="hidden" name="correctAnswer" value="<%= question?.answer %>">
+            <input type="hidden" name="explanation" value="<%= question?.explanation %>">
+            <input type="hidden" name="example" value="<%= question?.example %>">
             <div class="radio-group">
                 <% options.forEach((option, idx) => { %>
                     <label>
