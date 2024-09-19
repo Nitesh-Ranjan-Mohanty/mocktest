@@ -1,20 +1,3 @@
-<!-- <h2><%= question?.question %></h2>
-<form action="/quiz/question" method="POST">
-  <input type="hidden" name="correctAnswer" value="<%= question.answer %>">
-  <input type="hidden" name="explanation" value="<%= question.explanation %>">
-  <div>
-    <% question.options.forEach((option, idx) => { %>
-      <label>
-        <input type="radio" name="answer" value="<%= option %>" required>
-        <%= option %>
-      </label>
-      <br>
-    <% }) %>
-  </div>
-  <button type="submit">Submit Answer</button>
-</form>
-<script src="/js/speech.js"></script> -->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -82,7 +65,7 @@
             <input type="hidden" name="correctAnswer" value="<%= question.answer %>">
             <input type="hidden" name="explanation" value="<%= question.explanation %>">
             <div class="radio-group">
-                <% question.options.forEach((option, idx) => { %>
+                <% options.forEach((option, idx) => { %>
                     <label>
                         <input type="radio" name="answer" value="<%= option %>" required>
                         <%= option %>

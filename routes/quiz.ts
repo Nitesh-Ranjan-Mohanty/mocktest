@@ -61,51 +61,38 @@ router.get("/question", (req, res) => {
   }
 
   const question = shuffledQuestions[currentQuestionIndex];
-  res.render("question", { question });
+  res.render("question", { question, options: shuffleArray(question.options) });
 });
 
-// Handle question submission
-// router.post("/question", (req, res) => {
-//   const { answer } = req.body;
-//   const { shuffledQuestions, currentQuestionIndex } = req.session.quiz;
+router.post("/question", (req, res) => {
+  const userAnswer = req.body.answer;
+  const correctAnswer = req.body.correctAnswer;
+  const explanation = req.body.explanation;
 
-//   const currentQuestion = shuffledQuestions[currentQuestionIndex];
-//   const isCorrect = currentQuestion.answer === answer;
+  // Optionally, store these values in the session or database as needed
 
-//   req.session.quiz.userAnswers.push({ question: currentQuestion, answer });
-//   if (isCorrect) req.session.quiz.score++;
-
-//   req.session.quiz.currentQuestionIndex++;
-
-//   res.redirect("/quiz/question");
-// });
-
-router.post('/question', (req, res) => {
-    const userAnswer = req.body.answer;
-    const correctAnswer = req.body.correctAnswer;
-    const explanation = req.body.explanation;
-  
-    // Optionally, store these values in the session or database as needed
-  
-    res.render('feedback', {
-      userAnswer,
-      correctAnswer,
-      explanation
-    });
+  res.render("feedback", {
+    userAnswer,
+    correctAnswer,
+    explanation,
   });
+});
 
-  router.get('/next-question', (req, res) => {
-    const { shuffledQuestions, currentQuestionIndex } = req.session.quiz;
-  
-    if (currentQuestionIndex >= shuffledQuestions.length) {
-      return res.redirect('/quiz/result');
-    }
-  
-    const nextQuestion = shuffledQuestions[currentQuestionIndex];
-    req.session.quiz.currentQuestionIndex += 1;
-  
-    res.render('question', { question: nextQuestion });
+router.get("/next-question", (req, res) => {
+  const { shuffledQuestions, currentQuestionIndex } = req.session.quiz;
+
+  if (currentQuestionIndex >= shuffledQuestions.length) {
+    return res.redirect("/quiz/result");
+  }
+
+  const nextQuestion = shuffledQuestions[currentQuestionIndex];
+  req.session.quiz.currentQuestionIndex += 1;
+
+  res.render("question", {
+    question: nextQuestion,
+    options: shuffleArray(nextQuestion.options),
   });
+});
 
 // Display result
 router.get("/result", (req, res) => {
