@@ -1,0 +1,10 @@
+<h2>Select a Topic</h2>
+<form action="/quiz/select-topic" method="POST">
+  <label for="topic">Choose a topic:</label>
+  <select name="selectedTopic" id="topic">
+    <% topics.forEach((topic) => { %>
+      <option value="<%= topic %>"><%= topic %></option>
+    <% }) %>
+  </select>
+  <button type="submit">Start Quiz</button>
+</form>

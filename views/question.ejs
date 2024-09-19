@@ -1,0 +1,98 @@
+<!-- <h2><%= question?.question %></h2>
+<form action="/quiz/question" method="POST">
+  <input type="hidden" name="correctAnswer" value="<%= question.answer %>">
+  <input type="hidden" name="explanation" value="<%= question.explanation %>">
+  <div>
+    <% question.options.forEach((option, idx) => { %>
+      <label>
+        <input type="radio" name="answer" value="<%= option %>" required>
+        <%= option %>
+      </label>
+      <br>
+    <% }) %>
+  </div>
+  <button type="submit">Submit Answer</button>
+</form>
+<script src="/js/speech.js"></script> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Question</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            margin: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            font-size: 24px;
+            color: #007bff;
+            margin-bottom: 20px;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        .radio-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            font-size: 16px;
+            margin-bottom: 10px;
+            cursor: pointer;
+        }
+        input[type="radio"] {
+            margin-right: 10px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #007bff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        button:focus {
+            outline: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2><%= question?.question %></h2>
+        <form action="/quiz/question" method="POST">
+            <input type="hidden" name="correctAnswer" value="<%= question.answer %>">
+            <input type="hidden" name="explanation" value="<%= question.explanation %>">
+            <div class="radio-group">
+                <% question.options.forEach((option, idx) => { %>
+                    <label>
+                        <input type="radio" name="answer" value="<%= option %>" required>
+                        <%= option %>
+                    </label>
+                <% }) %>
+            </div>
+            <button type="submit">Submit Answer</button>
+        </form>
+    </div>
+    <script src="/js/speech.js"></script>
+</body>
+</html>
+

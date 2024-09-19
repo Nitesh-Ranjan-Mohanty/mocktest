@@ -1,0 +1,10 @@
+<h2>Your Score: <%= score %> / <%= totalQuestions %></h2>
+<h3>Review Answers:</h3>
+<ul>
+  <% questions.forEach((q) => { %>
+    <li>
+      <strong><%= q.question %></strong><br>
+      Correct Answer: <%= q.answer %>
+    </li>
+  <% }) %>
+</ul>
