@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,6 +12,7 @@
             color: #333;
             margin: 20px;
         }
+
         .container {
             max-width: 600px;
             margin: 0 auto;
@@ -19,17 +21,20 @@
             border-radius: 8px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
+
         p {
             font-size: 16px;
             line-height: 1.6;
             margin: 0 0 10px;
         }
+
         .header {
             font-size: 20px;
             font-weight: bold;
             margin-bottom: 20px;
             color: #007bff;
         }
+
         .answer {
             margin: 10px 0;
             padding: 10px;
@@ -37,12 +42,30 @@
             border-radius: 4px;
             background-color: #f9f9f9;
         }
+
         .explanation {
-            font-style: italic;
+            /* font-style: italic; */
             color: #555;
+        }
+
+        .answer.explanation {
+            font-family: Arial, sans-serif;
+            font-size: 16px;
+            line-height: 1.5;
+            margin: 10px 0;
+        }
+
+        .answer.explanation strong {
+            font-weight: bold;
+        }
+
+        .answer.explanation br {
+            content: "\A";
+            white-space: pre;
         }
     </style>
 </head>
+
 <body>
     <div class="container">
         <p id="feedback" data-correct-answer="<%= correctAnswer %>" data-user-answer="<%= userAnswer %>"
@@ -50,15 +73,19 @@
         </p>
         <p class="header">Answer Details</p>
         <p class="answer">
-            <strong>Correct Answer:</strong> <%= correctAnswer %>
+            <strong>Correct Answer:</strong>
+            <%= correctAnswer %>
         </p>
         <p class="answer">
-            <strong>Your Answer:</strong> <%= userAnswer %>
+            <strong>Your Answer:</strong>
+            <%= userAnswer %>
         </p>
-        <p class="answer explanation">
-            <strong>Explanation:</strong><br/> <%= explanation %>
-        </p>
+        <div class="answer explanation">
+            <strong>Explanation:</strong><br />
+            <%- explanation %>
+        </div>
     </div>
     <script src="/js/speech.js"></script>
 </body>
+
 </html>

@@ -4,6 +4,7 @@ import { webPackQuestions } from "../questionBank/webPackQuestionBank";
 import { jestQuestions } from "../questionBank/jestQuestionBank";
 import { reactQuestions } from "../questionBank/reactQuesionBank";
 import { shuffleArray } from "../utils/helpers";
+import { marked } from 'marked';
 
 const router = express.Router();
 
@@ -74,7 +75,7 @@ router.post("/question", (req, res) => {
   res.render("feedback", {
     userAnswer,
     correctAnswer,
-    explanation,
+    explanation:marked.parse(explanation),
   });
 });
 
