@@ -6,6 +6,7 @@ import { reactQuestions } from "../questionBank/reactQuesionBank";
 import { sqlQuestions } from "../questionBank/sqlQuesionBank";
 import { shuffleArray } from "../utils/helpers";
 import { marked } from "marked";
+import { babelQuestions } from "../questionBank/babelQuestionBank";
 
 const router = express.Router();
 
@@ -15,6 +16,7 @@ const questions = [
   ...jestQuestions,
   ...reactQuestions,
   ...sqlQuestions,
+  ...babelQuestions,
 ];
 
 // Middleware to initialize quiz session
@@ -34,7 +36,7 @@ router.use((req, res, next) => {
 // Route to select topic
 router.get("/select-topic", (req, res) => {
   res.render("select-topic", {
-    topics: ["nodejs", "webpack", "jest", "react", "sql"],
+    topics: ["nodejs", "webpack", "jest", "react", "sql", "babel"],
   });
 });
 
@@ -74,7 +76,7 @@ router.post("/question", (req, res) => {
   const example = req.body.example;
 
   // Optionally, store these values in the session or database as needed
-  if(userAnswer === correctAnswer) {
+  if (userAnswer === correctAnswer) {
     req.session.quiz.score += 1;
   }
   res.render("feedback", {
