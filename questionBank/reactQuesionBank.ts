@@ -1139,4 +1139,294 @@ export const reactQuestions: Question[] = [
       "Handling forms in React is typically done using controlled components, where form data is managed by the component's state. This allows for easy validation and handling of form submissions. Example:\n```js\nfunction MyForm() {\n  const [value, setValue] = useState('');\n  const handleChange = (e) => setValue(e.target.value);\n  return <input value={value} onChange={handleChange} />;\n}\n```",
     topic: "react",
   },
+  {
+    id: 81,
+    question: "What are fragments in React?",
+    options: [
+      "Fragments allow grouping of multiple elements without adding extra nodes to the DOM",
+      "Fragments are a type of context",
+      "Fragments handle form submissions",
+      "Fragments are used for state management",
+    ],
+    answer:
+      "Fragments allow grouping of multiple elements without adding extra nodes to the DOM",
+    explanation:
+      "Fragments in React, created with `<React.Fragment>` or shorthand `<>...</>`, allow you to group multiple elements without adding an extra wrapper node to the DOM. This helps in reducing the number of nodes and improving performance. Example:\n```js\nreturn (\n  <>\n    <ChildA />\n    <ChildB />\n  </>\n);\n```",
+    topic: "react",
+  },
+  {
+    id: 82,
+    question: "What is the purpose of `useReducer` in React?",
+    options: [
+      "To manage complex state logic in functional components",
+      "To handle side effects",
+      "To create context",
+      "To memoize values",
+    ],
+    answer: "To manage complex state logic in functional components",
+    explanation:
+      "`useReducer` is a hook that helps manage complex state logic in functional components. It works similarly to `useState` but allows for more advanced state updates through a reducer function. Example:\n```js\nconst [state, dispatch] = useReducer(reducer, initialState);\n```",
+    topic: "react",
+  },
+  {
+    id: 83,
+    question: "What is the purpose of `React.lazy`?",
+    options: [
+      "To enable code splitting and lazy loading of components",
+      "To handle state updates",
+      "To manage side effects",
+      "To create context",
+    ],
+    answer: "To enable code splitting and lazy loading of components",
+    explanation:
+      "`React.lazy` is used to dynamically import components and enable code splitting. It helps in lazy loading components only when they are needed, improving performance. Example:\n```js\nconst LazyComponent = React.lazy(() => import('./LazyComponent'));\n```",
+    topic: "react",
+  },
+  {
+    id: 84,
+    question: "How does `React.Suspense` work with `React.lazy`?",
+    options: [
+      "It provides a fallback UI while lazy-loaded components are being fetched",
+      "It handles state updates",
+      "It manages side effects",
+      "It creates context",
+    ],
+    answer:
+      "It provides a fallback UI while lazy-loaded components are being fetched",
+    explanation:
+      "`React.Suspense` is used to wrap lazy-loaded components and provide a fallback UI while the component is being fetched. This helps in showing a loading indicator or placeholder. Example:\n```js\n<Suspense fallback={<div>Loading...</div>}>\n  <LazyComponent />\n</Suspense>\n```",
+    topic: "react",
+  },
+  {
+    id: 85,
+    question:
+      "What is the difference between `useEffect` and `useLayoutEffect`?",
+    options: [
+      "`useEffect` runs after the DOM is updated, while `useLayoutEffect` runs before the DOM is painted",
+      "Both run at the same time",
+      "`useLayoutEffect` runs after the DOM is updated",
+      "`useEffect` runs before the DOM is painted",
+    ],
+    answer:
+      "`useEffect` runs after the DOM is updated, while `useLayoutEffect` runs before the DOM is painted",
+    explanation:
+      "`useEffect` is used for side effects and runs after the DOM has been updated. `useLayoutEffect`, on the other hand, runs synchronously before the DOM is painted, which is useful for reading layout and making synchronous updates. Example:\n```js\nuseLayoutEffect(() => { /* effect code */ }, [dependencies]);\n```",
+    topic: "react",
+  },
+  {
+    id: 86,
+    question: "What is the purpose of `useImperativeHandle`?",
+    options: [
+      "To customize the instance value exposed to parent components when using refs",
+      "To handle side effects",
+      "To manage state updates",
+      "To create context",
+    ],
+    answer:
+      "To customize the instance value exposed to parent components when using refs",
+    explanation:
+      "`useImperativeHandle` is used in conjunction with `forwardRef` to customize the instance value exposed to the parent component when using refs. It allows you to control what methods or properties are accessible to the parent. Example:\n```js\nconst MyComponent = forwardRef((props, ref) => {\n  useImperativeHandle(ref, () => ({ customMethod }));\n  return <div>...</div>;\n});\n```",
+    topic: "react",
+  },
+  {
+    id: 87,
+    question: "How do you handle asynchronous operations in React components?",
+    options: [
+      "Using `useEffect` and async functions",
+      "Using `useState` only",
+      "Using `useCallback`",
+      "Using `useMemo`",
+    ],
+    answer: "Using `useEffect` and async functions",
+    explanation:
+      "Asynchronous operations in React components can be handled using `useEffect` with async functions. The async function should be defined inside the `useEffect` and called immediately. Example:\n```js\nuseEffect(() => {\n  const fetchData = async () => {\n    const response = await fetch('api/data');\n    const data = await response.json();\n    setData(data);\n  };\n  fetchData();\n}, []);\n```",
+    topic: "react",
+  },
+  {
+    id: 88,
+    question: "What is the purpose of `useRef` in React?",
+    options: [
+      "To create mutable references to DOM elements or values",
+      "To manage state updates",
+      "To handle side effects",
+      "To create context",
+    ],
+    answer: "To create mutable references to DOM elements or values",
+    explanation:
+      "`useRef` is used to create mutable references to DOM elements or values that persist between renders without causing re-renders. It is useful for accessing DOM elements directly or storing mutable values. Example:\n```js\nconst inputRef = useRef(null);\nuseEffect(() => {\n  inputRef.current.focus();\n}, []);\nreturn <input ref={inputRef} />;\n```",
+    topic: "react",
+  },
+  {
+    id: 89,
+    question:
+      "How do you handle component lifecycle events in functional components?",
+    options: [
+      "Using the `useEffect` hook",
+      "Using `useState`",
+      "Using `useReducer`",
+      "Using `useContext`",
+    ],
+    answer: "Using the `useEffect` hook",
+    explanation:
+      "Component lifecycle events in functional components are handled using the `useEffect` hook. `useEffect` can mimic lifecycle methods such as `componentDidMount`, `componentDidUpdate`, and `componentWillUnmount` based on its dependency array. Example:\n```js\nuseEffect(() => { /* code runs on mount */ return () => { /* cleanup code */ }; }, [dependencies]);\n```",
+    topic: "react",
+  },
+  {
+    id: 90,
+    question: "What is `React.StrictMode` used for?",
+    options: [
+      "To activate additional checks and warnings for development",
+      "To handle state updates",
+      "To manage side effects",
+      "To create context",
+    ],
+    answer: "To activate additional checks and warnings for development",
+    explanation:
+      "`React.StrictMode` is a wrapper component that activates additional checks and warnings for its descendants in development mode. It helps to identify potential problems and improve code quality. Example:\n```js\n<React.StrictMode>\n  <App />\n</React.StrictMode>\n```",
+    topic: "react",
+  },
+  {
+    id: 91,
+    question:
+      "What is the difference between controlled and uncontrolled components in React?",
+    options: [
+      "Controlled components have their form data controlled by state, while uncontrolled components manage their own state",
+      "Both have the same behavior",
+      "Controlled components are managed by refs, while uncontrolled components use state",
+      "Uncontrolled components have their data controlled by state",
+    ],
+    answer:
+      "Controlled components have their form data controlled by state, while uncontrolled components manage their own state",
+    explanation:
+      "In controlled components, form data is controlled by React state, while in uncontrolled components, the form data is managed by the DOM. Controlled components are typically used for their ease of validation and control. Example of a controlled component:\n```js\nfunction MyForm() {\n  const [value, setValue] = useState('');\n  return <input value={value} onChange={(e) => setValue(e.target.value)} />;\n}\n```",
+    topic: "react",
+  },
+  {
+    id: 92,
+    question: "How can you optimize performance in React applications?",
+    options: [
+      "By using memoization techniques like `React.memo` and `useMemo`",
+      "By avoiding hooks",
+      "By using class components only",
+      "By manually updating the DOM",
+    ],
+    answer: "By using memoization techniques like `React.memo` and `useMemo`",
+    explanation:
+      "Performance optimization in React applications can be achieved using memoization techniques such as `React.memo` for functional components and `useMemo` for expensive calculations. These techniques help in preventing unnecessary re-renders and recalculations. Example:\n```js\nconst MemoizedComponent = React.memo(({ value }) => <div>{value}</div>);\nconst computedValue = useMemo(() => computeExpensiveValue(data), [data]);\n```",
+    topic: "react",
+  },
+  {
+    id: 93,
+    question: "What is the purpose of `useCallback` hook?",
+    options: [
+      "To memoize callback functions and prevent unnecessary re-renders",
+      "To handle state updates",
+      "To manage side effects",
+      "To create context",
+    ],
+    answer: "To memoize callback functions and prevent unnecessary re-renders",
+    explanation:
+      "`useCallback` is used to memoize callback functions so that they do not change between renders unless their dependencies change. This helps in preventing unnecessary re-renders of child components that depend on these functions. Example:\n```js\nconst memoizedCallback = useCallback(() => {\n  // function logic\n}, [dependencies]);\n```",
+    topic: "react",
+  },
+  {
+    id: 94,
+    question: "What is the purpose of `React.memo`?",
+    options: [
+      "To memoize a functional component and prevent unnecessary re-renders",
+      "To handle state updates",
+      "To manage side effects",
+      "To create context",
+    ],
+    answer:
+      "To memoize a functional component and prevent unnecessary re-renders",
+    explanation:
+      "`React.memo` is a higher-order component that memoizes a functional component, preventing unnecessary re-renders when the props have not changed. This helps in optimizing performance by avoiding redundant rendering. Example:\n```js\nconst MemoizedComponent = React.memo(function MyComponent(props) {\n  return <div>{props.value}</div>;\n});\n```",
+    topic: "react",
+  },
+  {
+    id: 95,
+    question: "What is `context` in React?",
+    options: [
+      "A way to pass data through the component tree without props drilling",
+      "A state management library",
+      "A hook for handling side effects",
+      "A method for handling events",
+    ],
+    answer:
+      "A way to pass data through the component tree without props drilling",
+    explanation:
+      "`context` in React is a mechanism that allows you to pass data through the component tree without having to pass props down manually at every level. It is useful for global state management and sharing data across components. Example:\n```js\nconst MyContext = React.createContext();\n<MyContext.Provider value={data}>\n  <ChildComponent />\n</MyContext.Provider>\n```",
+    topic: "react",
+  },
+  {
+    id: 96,
+    question: "How do you use `useContext` hook?",
+    options: [
+      "To access the value of a context within a functional component",
+      "To manage state updates",
+      "To handle side effects",
+      "To create a context",
+    ],
+    answer: "To access the value of a context within a functional component",
+    explanation:
+      "`useContext` is a hook used to access the value of a context within a functional component. It allows you to consume the context value without needing to use the `Context.Consumer` component. Example:\n```js\nconst contextValue = useContext(MyContext);\n```",
+    topic: "react",
+  },
+  {
+    id: 97,
+    question: "What is `React.Fragment` used for?",
+    options: [
+      "To group multiple elements without adding extra nodes to the DOM",
+      "To handle state updates",
+      "To manage side effects",
+      "To create context",
+    ],
+    answer: "To group multiple elements without adding extra nodes to the DOM",
+    explanation:
+      "`React.Fragment` is used to group multiple elements together without adding an extra wrapper node to the DOM. It helps in avoiding unnecessary elements and keeping the DOM tree clean. Example:\n```js\nreturn (\n  <React.Fragment>\n    <ChildA />\n    <ChildB />\n  </React.Fragment>\n);\n```",
+    topic: "react",
+  },
+  {
+    id: 98,
+    question: "What are `PropTypes` in React?",
+    options: [
+      "A way to validate the types of props passed to a component",
+      "A method for managing state",
+      "A hook for handling side effects",
+      "A context management tool",
+    ],
+    answer: "A way to validate the types of props passed to a component",
+    explanation:
+      "`PropTypes` is a library that provides runtime type checking for React component props. It helps in validating the types and shapes of props to ensure that the component receives the expected data. Example:\n```js\nimport PropTypes from 'prop-types';\nfunction MyComponent({ name }) {\n  return <div>{name}</div>;\n}\nMyComponent.propTypes = {\n  name: PropTypes.string.isRequired,\n};\n```",
+    topic: "react",
+  },
+  {
+    id: 99,
+    question: "How can you manage state globally in a React application?",
+    options: [
+      "Using context API or state management libraries like Redux",
+      "Using local component state",
+      "Using refs",
+      "Using props",
+    ],
+    answer: "Using context API or state management libraries like Redux",
+    explanation:
+      "Global state management in React applications can be achieved using the context API or state management libraries like Redux. The context API allows for passing state down through the component tree, while Redux provides a more structured way of managing global state. Example with context API:\n```js\nconst MyContext = React.createContext();\nfunction App() {\n  const [state, setState] = useState('');\n  return (\n    <MyContext.Provider value={{ state, setState }}>\n      <ChildComponent />\n    </MyContext.Provider>\n  );\n}\n```",
+    topic: "react",
+  },
+  {
+    id: 100,
+    question: "What is `ReactDOM.render` used for?",
+    options: [
+      "To render a React component to the DOM",
+      "To handle state updates",
+      "To manage side effects",
+      "To create context",
+    ],
+    answer: "To render a React component to the DOM",
+    explanation:
+      "`ReactDOM.render` is used to render a React component into the DOM. It is typically used to mount the root component of the React application. Example:\n```js\nReactDOM.render(<App />, document.getElementById('root'));\n```",
+    topic: "react",
+  },
 ];

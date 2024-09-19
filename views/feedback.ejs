@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -84,6 +84,115 @@
             <strong>Explanation:</strong><br />
             <%- explanation %>
         </div>
+    </div>
+    <script src="/js/speech.js"></script>
+</body>
+
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Answer Details</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            margin: 20px;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        p {
+            font-size: 16px;
+            line-height: 1.6;
+            margin: 0 0 10px;
+        }
+
+        .header {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #007bff;
+        }
+
+        .answer {
+            margin: 10px 0;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            background-color: #f9f9f9;
+        }
+
+        .explanation {
+            color: #555;
+        }
+
+        .answer.explanation {
+            font-family: Arial, sans-serif;
+            font-size: 16px;
+            line-height: 1.5;
+            margin: 10px 0;
+        }
+
+        .answer.explanation strong {
+            font-weight: bold;
+        }
+
+        .answer.explanation br {
+            content: "\A";
+            white-space: pre;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #007bff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <p id="feedback" data-correct-answer="<%= correctAnswer %>" data-user-answer="<%= userAnswer %>"
+            data-explanation="<%= explanation %>">
+        </p>
+        <p class="header">Answer Details</p>
+        <p class="answer">
+            <strong>Correct Answer:</strong>
+            <%= correctAnswer %>
+        </p>
+        <p class="answer">
+            <strong>Your Answer:</strong>
+            <%= userAnswer %>
+        </p>
+        <div class="answer explanation">
+            <strong>Explanation:</strong><br />
+            <%- explanation %>
+        </div>
+        <button class="button" id="nextQuestionButton">Next Question</button>
     </div>
     <script src="/js/speech.js"></script>
 </body>

@@ -5,6 +5,7 @@ interface Question {
   answer: string;
   explanation: string;
   topic: string;
+  example?: string;
 }
 
 export const jestQuestions: Question[] = [
@@ -19,7 +20,9 @@ export const jestQuestions: Question[] = [
     ],
     answer: "Using `toThrow` matcher",
     explanation:
-      "In Jest, the `toThrow` matcher is used to test if a function throws an error. You can specify the expected error or just check if any error is thrown. Example:\n```js\nfunction throwError() { throw new Error('Test error'); }\nexpect(throwError).toThrow('Test error');\n```",
+      "In Jest, the `toThrow` matcher is used to test if a function throws an error. You can specify the expected error or just check if any error is thrown.",
+    example:
+      "\n```js\nfunction throwError() { throw new Error('Test error'); }\nexpect(throwError).toThrow('Test error');\n```",
     topic: "jest",
   },
   {
@@ -33,7 +36,8 @@ export const jestQuestions: Question[] = [
     ],
     answer: "Using `jest.mock()`",
     explanation:
-      "You use `jest.mock()` to mock entire modules in Jest. It allows you to provide a mock implementation of the module. Example:\n```js\njest.mock('./myModule');\nconst myModule = require('./myModule');\nmyModule.someFunction.mockImplementation(() => 'mocked value');\nexpect(myModule.someFunction()).toBe('mocked value');\n```",
+      "You use `jest.mock()` to mock entire modules in Jest. It allows you to provide a mock implementation of the module. ",
+      example:"\n```js\njest.mock('./myModule');\nconst myModule = require('./myModule');\nmyModule.someFunction.mockImplementation(() => 'mocked value');\nexpect(myModule.someFunction()).toBe('mocked value');\n```",
     topic: "jest",
   },
   {
