@@ -1,6 +1,6 @@
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,6 +12,7 @@
             color: #333;
             margin: 20px;
         }
+
         .container {
             max-width: 600px;
             margin: 0 auto;
@@ -20,22 +21,26 @@
             border-radius: 8px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
+
         h2 {
             font-size: 24px;
             color: #007bff;
             margin-bottom: 20px;
             text-align: center;
         }
+
         form {
             display: flex;
             flex-direction: column;
             align-items: center;
         }
+
         label {
             font-size: 16px;
             margin-bottom: 10px;
             color: #333;
         }
+
         select {
             padding: 10px;
             font-size: 16px;
@@ -45,6 +50,7 @@
             width: 100%;
             max-width: 300px;
         }
+
         button {
             padding: 10px 20px;
             font-size: 16px;
@@ -55,26 +61,47 @@
             cursor: pointer;
             transition: background-color 0.3s ease;
         }
+
         button:hover {
             background-color: #0056b3;
         }
+
         button:focus {
             outline: none;
         }
+        h3 {
+            font-size: 20px;
+            color: #007bff;
+            margin-bottom: 20px;
+            text-align: start;
+        }
     </style>
 </head>
+
 <body>
     <div class="container">
         <h2>Select a Topic</h2>
         <form action="/quiz/select-topic" method="POST">
             <label for="topic">Choose a topic:</label>
             <select name="selectedTopic" id="topic">
-                <% topics.forEach((topic) => { %>
-                    <option value="<%= topic %>"><%= topic %></option>
-                <% }) %>
+                <% topics.forEach((topic)=> { %>
+                    <option value="<%= topic %>">
+                        <%= topic %>
+                    </option>
+                    <% }) %>
             </select>
             <button type="submit">Start Quiz</button>
         </form>
+        <div>
+            <h3>Resources</h3>
+            <div>
+                <a href="/quiz/resources/nodejs">Nodejs</a>
+            </div>
+            <div>
+                <a href="/quiz/resources/webpack">Webpack</a>
+            </div>
+        </div>
     </div>
 </body>
+
 </html>

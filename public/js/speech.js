@@ -1,74 +1,83 @@
-// // document.addEventListener("DOMContentLoaded", () => {
-// //   const synth = window.speechSynthesis;
+const dialogues = ({ userAnswer, correctAnswer }) => {
+  return [
+    `You picked ${userAnswer}. It’s ${
+      userAnswer === correctAnswer ? "correct" : "incorrect"
+    }.`,
+    `Your choice was ${userAnswer}. That’s ${
+      userAnswer === correctAnswer ? "right" : "wrong"
+    }.`,
+    `${userAnswer}? That’s ${
+      userAnswer === correctAnswer ? "correct!" : "not quite right."
+    }`,
+    `You selected ${userAnswer}. That's ${
+      userAnswer === correctAnswer ? "the right choice!" : "incorrect."
+    }`,
+    `Your answer, ${userAnswer}, is ${
+      userAnswer === correctAnswer ? "spot on!" : "not right."
+    }`,
+    `Looks like you answered ${userAnswer}. That's ${
+      userAnswer === correctAnswer ? "correct!" : "wrong."
+    }`,
+    `You went with ${userAnswer}. It’s ${
+      userAnswer === correctAnswer ? "the correct answer." : "incorrect."
+    }`,
+    `${userAnswer} is what you picked. That’s ${
+      userAnswer === correctAnswer ? "right!" : "not correct."
+    }`,
+    `You chose ${userAnswer}, and that’s ${
+      userAnswer === correctAnswer ? "absolutely right!" : "incorrect."
+    }`,
+    `${userAnswer} was your choice. That’s ${
+      userAnswer === correctAnswer ? "correct!" : "wrong."
+    }`,
+    `You opted for ${userAnswer}. That's ${
+      userAnswer === correctAnswer ? "right on target!" : "off the mark."
+    }`,
+    `You selected ${userAnswer}. ${
+      userAnswer === correctAnswer ? "Good job!" : "Not quite correct."
+    }`,
+    `Your choice of ${userAnswer} is ${
+      userAnswer === correctAnswer ? "the correct answer!" : "incorrect."
+    }`,
+    `${userAnswer} is your response. ${
+      userAnswer === correctAnswer ? "You nailed it!" : "That’s not right."
+    }`,
+    `You answered ${userAnswer}. That’s ${
+      userAnswer === correctAnswer ? "spot on!" : "wrong."
+    }`,
+    `${userAnswer}? That’s ${
+      userAnswer === correctAnswer ? "the right call!" : "the wrong one."
+    }`,
+    `You decided on ${userAnswer}. That's ${
+      userAnswer === correctAnswer ? "correct!" : "not correct."
+    }`,
+    `${userAnswer} is your pick, and it's ${
+      userAnswer === correctAnswer ? "the correct answer!" : "incorrect."
+    }`,
+    `The answer you gave, ${userAnswer}, is ${
+      userAnswer === correctAnswer ? "right!" : "not the right one."
+    }`,
+    `Your response, ${userAnswer}, is ${
+      userAnswer === correctAnswer ? "exactly right!" : "incorrect."
+    }`,
+    `You’ve gone with ${userAnswer}. ${
+      userAnswer === correctAnswer ? "Great job!" : "That’s wrong."
+    }`,
+    `You’ve picked ${userAnswer}. That’s ${
+      userAnswer === correctAnswer ? "correct!" : "not quite right."
+    }`,
+    `You chose ${userAnswer}, which is ${
+      userAnswer === correctAnswer ? "the right answer." : "not correct."
+    }`,
+    `${userAnswer} was your answer. That’s ${
+      userAnswer === correctAnswer ? "correct!" : "wrong."
+    }`,
+    `You put down ${userAnswer}. ${
+      userAnswer === correctAnswer ? "Well done!" : "Not the correct answer."
+    }`,
+  ];
+};
 
-// //   function speak(text) {
-// //     return new Promise((resolve) => {
-// //       const utterance = new SpeechSynthesisUtterance(text);
-// //       utterance.onend = () => resolve();
-// //       synth.speak(utterance);
-// //     });
-// //   }
-
-// //   // Function to be called after form submission
-// //   async function handleAnswerFeedback(correctAnswer, userAnswer, explanation) {
-// //     await speak(`The correct answer is ${correctAnswer}`);
-// //     await speak(
-// //       `Your answer is ${userAnswer} which is ${userAnswer === correctAnswer ? "Correct" : "Incorrect"}`
-// //     );
-// //     await speak(`Explanation: ${explanation}`);
-// //   }
-
-// //   // Attach event listener to the form
-// //   const form = document.querySelector('form');
-// //   if (form) {
-// //     form.addEventListener('submit', async (event) => {
-// //       event.preventDefault(); // Prevent the default form submission
-
-// //       const formData = new FormData(form);
-// //       const userAnswer = formData.get('answer');
-// //       const correctAnswer = formData.get('correctAnswer');
-// //       const explanation = formData.get('explanation');
-
-// //       // Provide feedback
-// //       await handleAnswerFeedback(correctAnswer, userAnswer, explanation);
-
-// //       // Optionally, redirect or update the page content after speaking
-// //       // window.location.href = '/next-question'; // Adjust as needed
-// //     });
-// //   }
-// // });
-
-// document.addEventListener("DOMContentLoaded", () => {
-//   const synth = window.speechSynthesis;
-
-//   function speak(text) {
-//     return new Promise((resolve) => {
-//       const utterance = new SpeechSynthesisUtterance(text);
-//       utterance.onend = () => resolve();
-//       synth.speak(utterance);
-//     });
-//   }
-
-//   async function handleAnswerFeedback(correctAnswer, userAnswer, explanation) {
-//     await speak(`The correct answer is ${correctAnswer}`);
-//     await speak(
-//       `Your answer is ${userAnswer} which is ${userAnswer === correctAnswer ? "Correct" : "Incorrect"}`
-//     );
-//     await speak(`Explanation: ${explanation}`);
-//   }
-
-//   const feedbackElement = document.getElementById('feedback');
-//   if (feedbackElement) {
-//     const correctAnswer = feedbackElement.dataset.correctAnswer;
-//     const userAnswer = feedbackElement.dataset.userAnswer;
-//     const explanation = feedbackElement.dataset.explanation;
-
-//     handleAnswerFeedback(correctAnswer, userAnswer, explanation).then(() => {
-//       // Redirect to the next question
-//       window.location.href = '/quiz/next-question'; // Adjust the URL to your route
-//     });
-//   }
-// });
 
 document.addEventListener("DOMContentLoaded", () => {
   const synth = window.speechSynthesis;
@@ -122,14 +131,25 @@ function markdownToPlainText(html) {
   return text.trim();
 }
 
+
   async function handleAnswerFeedback(correctAnswer, userAnswer, explanation) {
-    await speak(`The correct answer is ${correctAnswer}`);
-    await speak(
-      `Your answer is ${userAnswer} which is ${userAnswer === correctAnswer ? "Correct" : "Incorrect"}`
-    );
-    console.log(`${markdownToPlainText(explanation)}`)
+    if (userAnswer !== correctAnswer) {
+      await speak(`The correct answer is ${correctAnswer}`);
+    }
+    
+    const dialogue = dialogues({ userAnswer, correctAnswer });
+    
+    // Function to get a random dialogue
+    function getRandomDialogue() {
+      const index = Math.floor(Math.random() * dialogue.length);
+      return dialogue[index];
+    }
+    
+    // Usage with the speak function
+    await speak(getRandomDialogue());
     await speak(`${markdownToPlainText(explanation)}`);
   }
+  
 
   const feedbackElement = document.getElementById('feedback');
   if (feedbackElement) {

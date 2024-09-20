@@ -1,10 +1,131 @@
-<h2>Your Score: <%= score %> / <%= totalQuestions %></h2>
+<!-- <h2>Your Score: <%= score %> / <%= totalQuestions %>
+</h2>
 <h3>Review Answers:</h3>
 <ul>
-  <% questions.forEach((q) => { %>
+  <% questions.forEach((q)=> { %>
     <li>
-      <strong><%= q.question %></strong><br>
+      <strong>
+        <%= q.question %>
+      </strong><br>
       Correct Answer: <%= q.answer %>
     </li>
-  <% }) %>
+    <% }) %>
 </ul>
+
+<div>
+  <button onclick="location.href='/quiz/select-topic'">Done</button>
+</div> -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz Score</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      color: #333;
+      margin: 20px;
+    }
+
+    .container {
+      max-width: 700px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+      font-size: 24px;
+      color: #007bff;
+      margin-bottom: 20px;
+    }
+
+    h3 {
+      font-size: 20px;
+      color: #333;
+      margin-bottom: 15px;
+    }
+
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    li {
+      margin-bottom: 15px;
+      padding: 10px;
+      background-color: #f9f9f9;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+    }
+
+    li strong {
+      font-size: 16px;
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    li span {
+      font-size: 14px;
+      color: #555;
+    }
+
+    button {
+      display: inline-block;
+      padding: 10px 20px;
+      font-size: 16px;
+      color: #fff;
+      background-color: #007bff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      margin-top: 20px;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    button:focus {
+      outline: none;
+    }
+
+    .button_container {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: flex-end;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h2>Your Score: <%= score %> / <%= totalQuestions %>
+    </h2>
+    <h3>Review Answers:</h3>
+    <ul>
+      <% questions.forEach((q)=> { %>
+        <li>
+          <strong>
+            <%= q.question %>
+          </strong>
+          <span>Correct Answer: <%= q.answer %></span>
+        </li>
+        <% }) %>
+    </ul>
+    <div class="button_container">
+      <button onclick="location.href='/quiz/select-topic'">Done</button>
+    </div>
+  </div>
+</body>
+
+</html>

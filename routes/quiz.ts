@@ -7,6 +7,8 @@ import { sqlQuestions } from "../questionBank/sqlQuesionBank";
 import { shuffleArray } from "../utils/helpers";
 import { marked } from "marked";
 import { babelQuestions } from "../questionBank/babelQuestionBank";
+import fs from "fs";
+import path from "path";
 
 const router = express.Router();
 
@@ -74,7 +76,6 @@ router.post("/question", (req, res) => {
   const correctAnswer = req.body.correctAnswer;
   const explanation = req.body.explanation;
   const example = req.body.example;
-
   // Optionally, store these values in the session or database as needed
   if (userAnswer === correctAnswer) {
     req.session.quiz.score += 1;
@@ -110,6 +111,35 @@ router.get("/result", (req, res) => {
     score,
     totalQuestions: shuffledQuestions.length,
     questions: shuffledQuestions,
+  });
+});
+
+
+router.get('/resources/nodejs', (req, res) => {
+  // Read the Markdown file
+  const filePath = path.join(__dirname, "../resources/nodejs.md");
+  fs.readFile(filePath, 'utf8', (err, data) => {
+      if (err) {
+          return res.status(500).send('Error reading markdown file');
+      }
+      // Convert Markdown to HTML
+      const htmlContent = marked(data);
+      // Render EJS template
+      res.render('template', { content: htmlContent });
+  });
+});
+
+router.get('/resources/webpack', (req, res) => {
+  // Read the Markdown file
+  const filePath = path.join(__dirname, "../resources/webpack.md");
+  fs.readFile(filePath, 'utf8', (err, data) => {
+      if (err) {
+          return res.status(500).send('Error reading markdown file');
+      }
+      // Convert Markdown to HTML
+      const htmlContent = marked(data);
+      // Render EJS template
+      res.render('template', { content: htmlContent });
   });
 });
 
