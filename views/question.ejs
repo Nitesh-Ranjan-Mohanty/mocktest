@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,6 +12,7 @@
             color: #333;
             margin: 20px;
         }
+
         .container {
             max-width: 800px;
             margin: 0 auto;
@@ -19,27 +21,33 @@
             border-radius: 8px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
+
         h2 {
             font-size: 24px;
             color: #007bff;
             margin-bottom: 20px;
         }
+
         form {
             display: flex;
             flex-direction: column;
         }
+
         .radio-group {
             margin-bottom: 20px;
         }
+
         label {
             display: block;
             font-size: 16px;
             margin-bottom: 10px;
             cursor: pointer;
         }
+
         input[type="radio"] {
             margin-right: 10px;
         }
+
         button {
             padding: 10px 20px;
             font-size: 16px;
@@ -50,34 +58,57 @@
             cursor: pointer;
             transition: background-color 0.3s ease;
         }
+
         button:hover {
             background-color: #0056b3;
         }
+
         button:focus {
             outline: none;
         }
+
+        .count_and_close {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+        }
     </style>
 </head>
+
 <body>
     <div class="container">
-        <h4><%= questionNumber %>/<%= questionCount%></h4>
-        <h2><%=questionNumber%> <%= question?.question %></h2>
+        <div class="count_and_close">
+            <h4>
+                <%= questionNumber %>/<%= questionCount%>
+            </h4>
+            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000"
+            onclick="window.location.href='/quiz/select-topic'"
+                style="cursor: pointer;">
+                <path
+                    d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z" />
+            </svg>
+        </div>
+        <h2>
+            <%=questionNumber%>
+                <%= question?.question %>
+        </h2>
         <form action="/quiz/question" method="POST">
             <input type="hidden" name="correctAnswer" value="<%= question?.answer %>">
             <input type="hidden" name="explanation" value="<%= question?.explanation %>">
             <input type="hidden" name="example" value="<%= question?.example %>">
             <div class="radio-group">
-                <% options.forEach((option, idx) => { %>
+                <% options.forEach((option, idx)=> { %>
                     <label>
                         <input type="radio" name="answer" value="<%= option %>" required>
                         <%= option %>
                     </label>
-                <% }) %>
+                    <% }) %>
             </div>
             <button type="submit">Submit Answer</button>
         </form>
     </div>
     <script src="/js/question.js"></script>
 </body>
-</html>
 
+</html>
