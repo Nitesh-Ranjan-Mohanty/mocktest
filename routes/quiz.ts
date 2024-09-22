@@ -60,20 +60,26 @@ router.post("/select-topic", (req, res) => {
   req.session.quiz.score = 0;
   req.session.quiz.userAnswers = [];
 
-  res.redirect("/quiz/question");
+  // res.redirect("/quiz/question");
+  res.redirect("/quiz/next-question")
 });
 
 // Display one question at a time
-router.get("/question", (req, res) => {
-  const { shuffledQuestions, currentQuestionIndex } = req.session.quiz;
+// router.get("/question", (req, res) => {
+//   const { shuffledQuestions, currentQuestionIndex } = req.session.quiz;
 
-  if (currentQuestionIndex >= shuffledQuestions.length) {
-    return res.redirect("/quiz/result");
-  }
+//   if (currentQuestionIndex >= shuffledQuestions.length) {
+//     return res.redirect("/quiz/result");
+//   }
 
-  const question = shuffledQuestions[currentQuestionIndex];
-  res.render("question", { question, options: shuffleArray(question.options) });
-});
+//   const question = shuffledQuestions[currentQuestionIndex];
+//   res.render("question", { 
+//     question, 
+//     options: shuffleArray(question.options), 
+//     questionNumber: currentQuestionIndex, 
+//     questionCount: shuffledQuestions.length, 
+//   });
+// });
 
 router.post("/question", (req, res) => {
   const userAnswer = req.body.answer;
@@ -105,6 +111,8 @@ router.get("/next-question", (req, res) => {
   res.render("question", {
     question: nextQuestion,
     options: shuffleArray(nextQuestion.options),
+    questionNumber: currentQuestionIndex,
+    questionCount: shuffledQuestions.length, 
   });
 });
 

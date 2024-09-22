@@ -60,7 +60,8 @@
 </head>
 <body>
     <div class="container">
-        <h2><%= question?.question %></h2>
+        <h4><%= questionNumber %>/<%= questionCount%></h4>
+        <h2><%=questionNumber%> <%= question?.question %></h2>
         <form action="/quiz/question" method="POST">
             <input type="hidden" name="correctAnswer" value="<%= question?.answer %>">
             <input type="hidden" name="explanation" value="<%= question?.explanation %>">
