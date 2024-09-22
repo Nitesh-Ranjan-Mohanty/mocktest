@@ -6,13 +6,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Select Topic</title>
     <style>
+        /* body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            margin: 20px;
+        } */
         body {
             font-family: Arial, sans-serif;
             background-color: #f4f4f4;
             color: #333;
             margin: 20px;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            height: 90vh;
         }
 
+        /* .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        } */
         .container {
             max-width: 600px;
             margin: 0 auto;
@@ -20,6 +39,8 @@
             background-color: #fff;
             border-radius: 8px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            flex: 1;
+            /* border: solid; */
         }
 
         h2 {
@@ -69,11 +90,16 @@
         button:focus {
             outline: none;
         }
+
         h3 {
             font-size: 20px;
             color: #007bff;
             margin-bottom: 20px;
             text-align: start;
+        }
+
+        .resources_class {
+            padding: 7px;
         }
     </style>
 </head>
@@ -94,19 +120,19 @@
         </form>
         <div>
             <h3>Resources</h3>
-            <div>
+            <div class="resources_class">
                 <a href="/quiz/resources/nodejs">Nodejs</a>
             </div>
-            <div>
+            <div class="resources_class">
                 <a href="/quiz/resources/webpack">Webpack</a>
             </div>
-            <div>
+            <div class="resources_class">
                 <a href="/quiz/resources/html">HTML</a>
             </div>
-            <div>
+            <div class="resources_class">
                 <a href="/quiz/resources/css">CSS</a>
             </div>
-            
+
         </div>
     </div>
 </body>
