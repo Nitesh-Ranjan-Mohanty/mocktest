@@ -10,6 +10,7 @@ import { babelQuestions } from "../questionBank/babelQuestionBank";
 import fs from "fs";
 import path from "path";
 import { htmlQuestions } from "../questionBank/htmlQuestionBank";
+import { cssQuestions } from "../questionBank/cssQuestionBank";
 
 const router = express.Router();
 
@@ -21,6 +22,7 @@ const questions = [
   ...sqlQuestions,
   ...babelQuestions,
   ...htmlQuestions,
+  ...cssQuestions,
 ];
 
 // Middleware to initialize quiz session
@@ -40,7 +42,7 @@ router.use((req, res, next) => {
 // Route to select topic
 router.get("/select-topic", (req, res) => {
   res.render("select-topic", {
-    topics: ["nodejs", "webpack", "jest", "react", "sql", "babel", "html"],
+    topics: ["nodejs", "webpack", "jest", "react", "sql", "babel", "html", "css" ],
   });
 });
 
@@ -134,6 +136,20 @@ router.get('/resources/nodejs', (req, res) => {
 router.get('/resources/webpack', (req, res) => {
   // Read the Markdown file
   const filePath = path.join(__dirname, "../resources/webpack.md");
+  fs.readFile(filePath, 'utf8', (err, data) => {
+    if (err) {
+      return res.status(500).send('Error reading markdown file');
+    }
+    // Convert Markdown to HTML
+    const htmlContent = marked(data);
+    // Render EJS template
+    res.render('template', { content: htmlContent });
+  });
+});
+
+router.get('/resources/css', (req, res) => {
+  // Read the Markdown file
+  const filePath = path.join(__dirname, "../resources/css.md");
   fs.readFile(filePath, 'utf8', (err, data) => {
     if (err) {
       return res.status(500).send('Error reading markdown file');
