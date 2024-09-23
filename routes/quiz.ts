@@ -199,7 +199,7 @@ router.get('/resources/react/hooks/effect', (req, res) => {
 
 router.get('/resources/react/hooks/useContext', (req, res) => {
   // Read the Markdown file
-  const filePath = path.join(__dirname, "../resources/reactUseContext.md");
+  const filePath = path.join(__dirname, "../resources/reactUseContextHook.md");
   fs.readFile(filePath, 'utf8', (err, data) => {
     if (err) {
       return res.status(500).send('Error reading markdown file');
