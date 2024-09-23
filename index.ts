@@ -19,6 +19,10 @@ app.use(
 
 app.use("/quiz", quizRouter);
 
+app.use((req, res) => {
+  res.redirect("/quiz/select-topic"); 
+});
+
 app.listen(3000, () => {
   console.log("Server running on http://localhost:3000");
 });
