@@ -183,4 +183,18 @@ router.get('/resources/html', (req, res) => {
   });
 });
 
+router.get('/resources/react/hooks/effect', (req, res) => {
+  // Read the Markdown file
+  const filePath = path.join(__dirname, "../resources/reactEffectHooks.md");
+  fs.readFile(filePath, 'utf8', (err, data) => {
+    if (err) {
+      return res.status(500).send('Error reading markdown file');
+    }
+    // Convert Markdown to HTML
+    const htmlContent = marked(data);
+    // Render EJS template
+    res.render('template', { content: htmlContent });
+  });
+});
+
 export default router;
