@@ -19,7 +19,7 @@
             margin: 20px;
             display: flex;
             flex-direction: row;
-            align-items: center;
+            align-items: flex-start;
             justify-content: center;
             height: 90vh;
         }
@@ -101,6 +101,44 @@
         .resources_class {
             padding: 7px;
         }
+
+        .container_resource {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .category {
+            flex: 1 1 calc(50% - 20px);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            border-radius: 5px;
+            background-color: #fff;
+        }
+
+        .category h4 {
+            color: #0056b3;
+            border-bottom: 2px solid #0056b3;
+            padding-bottom: 5px;
+            margin-bottom: 10px;
+        }
+
+        .resources_class a {
+            display: block;
+            color: #007bff;
+            text-decoration: none;
+            margin: 5px 0;
+        }
+
+        .resources_class a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 600px) {
+            .category {
+                flex: 1 1 100%;
+            }
+        }
     </style>
 </head>
 
@@ -118,7 +156,7 @@
             </select>
             <button type="submit">Start Quiz</button>
         </form>
-        <div>
+        <!-- <div>
             <h3>Resources</h3>
             <div class="resources_class">
                 <a href="/quiz/resources/nodejs">Nodejs</a>
@@ -139,7 +177,47 @@
                 <a href="/quiz/resources/react/hooks/useContext">React useContext Hook</a>
             </div>
 
+        </div> -->
+        <div >
+            <h3>Resources</h3>
+
+            <div class="container_resource">
+                <div class="category">
+                    <h4>Node.js</h4>
+                    <div class="resources_class">
+                        <a href="/quiz/resources/nodejs">Node.js</a>
+                    </div>
+                </div>
+
+                <div class="category">
+                    <h4>Webpack</h4>
+                    <div class="resources_class">
+                        <a href="/quiz/resources/webpack">Webpack</a>
+                    </div>
+                </div>
+
+                <div class="category">
+                    <h4>HTML & CSS</h4>
+                    <div class="resources_class">
+                        <a href="/quiz/resources/html">HTML</a>
+                    </div>
+                    <div class="resources_class">
+                        <a href="/quiz/resources/css">CSS</a>
+                    </div>
+                </div>
+
+                <div class="category">
+                    <h4>React</h4>
+                    <div class="resources_class">
+                        <a href="/quiz/resources/react/hooks/effect">React Effect Hooks</a>
+                    </div>
+                    <div class="resources_class">
+                        <a href="/quiz/resources/react/hooks/useContext">React useContext Hook</a>
+                    </div>
+                </div>
+            </div>
         </div>
+
     </div>
 </body>
 
