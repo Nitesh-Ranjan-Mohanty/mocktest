@@ -1,5 +1,3 @@
-Yes, there is a tool similar to **NVM** (Node Version Manager) for Java called **SDKMAN!** that allows you to manage multiple versions of Java (JDKs) and easily switch between them.
-
 ### What is SDKMAN!?
 SDKMAN! is a tool for managing parallel versions of SDKs, including Java, and allows you to install and switch between multiple versions of Java easily. It's similar to NVM but designed for SDKs, including the Java JDK.
 
@@ -61,5 +59,3 @@ Once SDKMAN! is installed, you can install multiple versions of the JDK easily.
 - You can easily install, switch, and manage multiple versions of Java.
 - It works across different operating systems (Linux, macOS, and Windows via WSL).
 - It supports other SDKs besides Java, like Kotlin, Scala, Maven, Gradle, and more.
-
-Let me know if you'd like more help with setting this up!
