@@ -419,16 +419,33 @@ This technique is useful for breaking down complex transformations into smaller,
 ```
 
 ### Variables and Parameters
-```xml
-<!-- Global variable -->
-<xsl:variable name="tax-rate" select="0.1"/>
 
-<!-- Local variable -->
-<xsl:template match="book">
-    <xsl:variable name="price-with-tax" select="price * (1 + $tax-rate)"/>
-    <p>Price with tax: <xsl:value-of select="$price-with-tax"/></p>
-</xsl:template>
-```
+1. **Global Variable**:
+   ```xml
+   <xsl:variable name="tax-rate" select="0.1"/>
+   ```
+   - Declared at the global scope (outside any specific template or function).
+   - Available throughout the XSLT stylesheet.
+   - In this case, `tax-rate` represents a constant tax rate of `10%` (0.1).
+
+2. **Local Variable**:
+   ```xml
+   <xsl:template match="book">
+       <xsl:variable name="price-with-tax" select="price * (1 + $tax-rate)"/>
+       <p>Price with tax: <xsl:value-of select="$price-with-tax"/></p>
+   </xsl:template>
+   ```
+   - Declared within a specific template, `match="book"`.
+   - Only available within the scope of the `<xsl:template>` where it is defined.
+   - The variable `price-with-tax` is calculated using the value of the `price` element (assumed to exist within the matched `book` node) and the global `$tax-rate`.
+
+#### Summary:
+- **Global Variables**: Defined at the top-level and are accessible throughout the stylesheet.
+- **Local Variables**: Defined within a template or function and only accessible within that context.
+- **Scope**:
+  - Global variables have a broader scope.
+  - Local variables have a restricted, specific scope.
+
 
 ### Modes
 ```xml
