@@ -29,7 +29,8 @@
             color: red;
             text-align: center;
         }
-        h2{
+
+        h2 {
             text-align: start;
             border-bottom: solid 2px red;
         }
@@ -82,7 +83,7 @@
             padding: 20px;
             overflow: auto;
             border-radius: 3px;
-            border:solid 2px blue
+            border: solid 2px blue
         }
 
         code {
@@ -110,6 +111,15 @@
             font-size: 20px;
         }
 
+        .count_and_close {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            height: 25px;
+
+        }
+
         @media (max-width: 600px) {
             .markdown-content {
                 padding: 10px;
@@ -123,7 +133,18 @@
 </head>
 
 <body>
+
     <div class="markdown-content">
+        <div class="count_and_close">
+            <h4>
+                &nbsp;
+            </h4>
+            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000"
+                onclick="window.location.href='/quiz/select-topic'" style="cursor: pointer;">
+                <path
+                    d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z" />
+            </svg>
+        </div>
         <%- content %>
     </div>
 </body>
