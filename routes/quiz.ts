@@ -253,4 +253,18 @@ router.get('/resources/struts', (req, res) => {
   });
 });
 
+router.get('/resources/struts', (req, res) => {
+  // Read the Markdown file
+  const filePath = path.join(__dirname, "../resources/XMLAndJSON.md");
+  fs.readFile(filePath, 'utf8', (err, data) => {
+    if (err) {
+      return res.status(500).send('Error reading markdown file');
+    }
+    // Convert Markdown to HTML
+    const htmlContent = marked(data);
+    // Render EJS template
+    res.render('template', { content: htmlContent });
+  });
+});
+
 export default router;
