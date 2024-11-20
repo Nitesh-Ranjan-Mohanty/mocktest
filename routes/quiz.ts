@@ -183,34 +183,6 @@ router.get('/resources/html', (req, res) => {
   });
 });
 
-router.get('/resources/react/hooks/effect', (req, res) => {
-  // Read the Markdown file
-  const filePath = path.join(__dirname, "../resources/reactEffectHooks.md");
-  fs.readFile(filePath, 'utf8', (err, data) => {
-    if (err) {
-      return res.status(500).send('Error reading markdown file');
-    }
-    // Convert Markdown to HTML
-    const htmlContent = marked(data);
-    // Render EJS template
-    res.render('template', { content: htmlContent });
-  });
-});
-
-router.get('/resources/react/hooks/useContext', (req, res) => {
-  // Read the Markdown file
-  const filePath = path.join(__dirname, "../resources/reactUseContextHook.md");
-  fs.readFile(filePath, 'utf8', (err, data) => {
-    if (err) {
-      return res.status(500).send('Error reading markdown file');
-    }
-    // Convert Markdown to HTML
-    const htmlContent = marked(data);
-    // Render EJS template
-    res.render('template', { content: htmlContent });
-  });
-});
-
 router.get('/resources/java/sdkman', (req, res) => {
   // Read the Markdown file
   const filePath = path.join(__dirname, "../resources/sdkman.md");
@@ -242,6 +214,20 @@ router.get('/resources/xslt', (req, res) => {
 router.get('/resources/struts', (req, res) => {
   // Read the Markdown file
   const filePath = path.join(__dirname, "../resources/struts.md");
+  fs.readFile(filePath, 'utf8', (err, data) => {
+    if (err) {
+      return res.status(500).send('Error reading markdown file');
+    }
+    // Convert Markdown to HTML
+    const htmlContent = marked(data);
+    // Render EJS template
+    res.render('template', { content: htmlContent });
+  });
+});
+
+router.get('/resources/react', (req, res) => {
+  // Read the Markdown file
+  const filePath = path.join(__dirname, "../resources/react.md");
   fs.readFile(filePath, 'utf8', (err, data) => {
     if (err) {
       return res.status(500).send('Error reading markdown file');

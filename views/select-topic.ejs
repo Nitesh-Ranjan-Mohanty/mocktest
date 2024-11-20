@@ -104,6 +104,9 @@
         .resources_class {
             padding: 7px;
         }
+        .subCat{
+            padding-top: 0px;
+        }
 
         .container_resource {
             display: flex;
@@ -123,11 +126,29 @@
             margin-top: 20px;
         }
 
+        .subCategory {
+            /* width: 100%; */
+            /* padding-left: 15px; */
+            background-color: #fff;
+        }
+
+        .subCategory h4 {
+            color: red !important;
+            border: none !important;
+            /* border-bottom: 2px solid red; */
+            padding-bottom: 5px;
+            margin-bottom: 10px;
+            /* border-left: 5px solid red; */
+            padding-left: 10px;
+            /* text-decoration: underline; */
+        }
+
         .category h4 {
             color: red;
             border-bottom: 2px solid red;
             padding-bottom: 5px;
             margin-bottom: 10px;
+
         }
 
         .resources_class a {
@@ -146,6 +167,10 @@
             .category {
                 flex: 1 1 100%;
             }
+        }
+
+        .cat-w100 {
+            flex: 1 1 100% !important;
         }
     </style>
 </head>
@@ -176,7 +201,7 @@
                 </div>
 
                 <div class="category">
-                    <h4>Webpack</h4>
+                    <h4>Module Bundler / Build Tool</h4>
                     <div class="resources_class">
                         <a href="/quiz/resources/webpack">Webpack</a>
                     </div>
@@ -192,15 +217,6 @@
                     </div>
                 </div>
 
-                <div class="category">
-                    <h4>React</h4>
-                    <div class="resources_class">
-                        <a href="/quiz/resources/react/hooks/effect">React Effect Hooks</a>
-                    </div>
-                    <div class="resources_class">
-                        <a href="/quiz/resources/react/hooks/useContext">React useContext Hook</a>
-                    </div>
-                </div>
                 <div class="category">
                     <h4>Java</h4>
 
@@ -220,14 +236,24 @@
                     <h4>Transformation</h4>
 
                     <div class="resources_class">
-                        <a href="/quiz/resources/xslt">xslt</a>
+                        <a href="/quiz/resources/xslt">XSLT</a>
                     </div>
                 </div>
-                <div class="category">
+                <div class="category cat-w100">
                     <h4>Web Development Framework</h4>
 
                     <div class="resources_class">
-                        <a href="/quiz/resources/struts">struts</a>
+                        <a href="/quiz/resources/struts">Struts</a>
+                    </div>
+                    <div class="subCategory">
+                        <h4>Java Script Frameworks</h4>
+
+                        <div class="resources_class subCat">
+                            <a href="/quiz/resources/react">React</a>
+                        </div>
+                        <div class="resources_class subCat">
+                            <a href="/quiz/resources/nodejs">Node JS</a>
+                        </div>
                     </div>
                 </div>
             </div>
