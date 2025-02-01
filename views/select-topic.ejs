@@ -7,35 +7,23 @@
     <title>Select Topic</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
-        @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Sacramento&display=swap');
-        @import url('https://fonts.googleapis.com/css2?family=Reenie+Beanie&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Sacramento&display=swap');
-        @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&family=Reenie+Beanie&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Sacramento&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Sacramento&display=swap');
 
-        /* body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            color: #333;
-            margin: 20px;
-        } */
         body {
-            font-family: "Reenie Beanie", cursive;
-            font-weight: 400;
-            font-style: normal;
-            line-height: 1.6;
+            font-family: "Roboto", sans-serif;
+            background-color: #f7f7f7;
             margin: 0;
-            padding: 20px;
-            background-color: #f4f4f4;
+            padding: 0;
             color: #333;
         }
 
         .container {
-            padding: 30px;
-            border-radius: 5px;
-            max-width: 800px;
-            margin: 20px auto;
-
-            background-color: #fdfdfd;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            padding: 40px;
+            border-radius: 8px;
+            max-width: 900px;
+            margin: 40px auto;
+            background-color: #fff;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
             background-image: radial-gradient(rgba(0, 0, 0, 0.02) 1px, transparent 1px),
                 radial-gradient(rgba(0, 0, 0, 0.02) 1px, transparent 1px);
             background-position: 0 0, 25px 25px;
@@ -43,15 +31,18 @@
         }
 
         h2 {
-            color: red;
-            text-align: start;
-            border-bottom: solid 2px red;
+            font-size: 28px;
+            color: #3b3b3b;
+            text-align: left;
+            margin-bottom: 20px;
+            font-weight: 600;
         }
 
         form {
             display: flex;
             flex-direction: column;
             align-items: center;
+            margin-bottom: 40px;
         }
 
         label {
@@ -61,29 +52,33 @@
         }
 
         select {
-            padding: 10px;
-            font-size: 20px;
-            border: 2px solid blue;
+            padding: 12px;
+            font-size: 18px;
+            border: 2px solid #007bff;
             border-radius: 4px;
             margin-bottom: 20px;
             width: 100%;
-            max-width: 300px;
-            font-family: "Reenie Beanie", cursive;
-            font-weight: 600;
-            color: blue;
+            max-width: 350px;
+            font-family: "Roboto", sans-serif;
+            font-weight: 500;
+            color: #007bff;
+            transition: border-color 0.3s ease;
+        }
+
+        select:hover {
+            border-color: #0056b3;
         }
 
         button {
-            padding: 10px 20px;
-            font-size: 17px;
+            padding: 12px 30px;
+            font-size: 18px;
             color: #fff;
             background-color: #007bff;
             border: none;
             border-radius: 4px;
             cursor: pointer;
             transition: background-color 0.3s ease;
-            font-family: "Reenie Beanie", cursive;
-            font-weight: 600;
+            font-weight: 500;
         }
 
         button:hover {
@@ -94,83 +89,63 @@
             outline: none;
         }
 
-        h3 {
-            font-size: 20px;
-            color: #007bff;
-            margin-bottom: 20px;
-            text-align: start;
-        }
-
         .resources_class {
-            padding: 7px;
-        }
-        .subCat{
-            padding-top: 0px;
+            padding: 10px;
+            font-size: 16px;
         }
 
         .container_resource {
             display: flex;
-            justify-content: space-around;
             flex-wrap: wrap;
-            /* gap: 20px; */
-            width: 100%;
+            gap: 20px;
         }
 
         .category {
-            /* flex: 1 1 calc(50% - 20px); */
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            width: 48%;
+            background-color: #fff;
             padding: 20px;
-            border-radius: 5px;
-            background-color: #fff;
-            width: 40%;
-            margin-top: 20px;
-        }
-
-        .subCategory {
-            /* width: 100%; */
-            /* padding-left: 15px; */
-            background-color: #fff;
-        }
-
-        .subCategory h4 {
-            color: red !important;
-            border: none !important;
-            /* border-bottom: 2px solid red; */
-            padding-bottom: 5px;
-            margin-bottom: 10px;
-            /* border-left: 5px solid red; */
-            padding-left: 10px;
-            /* text-decoration: underline; */
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
         }
 
         .category h4 {
-            color: red;
-            border-bottom: 2px solid red;
-            padding-bottom: 5px;
-            margin-bottom: 10px;
+            font-size: 22px;
+            color: #007bff;
+            margin-bottom: 20px;
+            text-decoration: underline;
+        }
 
+        .subCategory h4 {
+            font-size: 20px;
+            color: #333;
+            margin-bottom: 15px;
         }
 
         .resources_class a {
             display: block;
-            color: blue;
+            color: #007bff;
             text-decoration: none;
-            margin: 5px 0;
-            font-weight: 600;
+            margin: 8px 0;
+            font-weight: 500;
+            transition: color 0.3s ease;
         }
 
         .resources_class a:hover {
-            text-decoration: none;
+            color: #0056b3;
         }
 
-        @media (max-width: 600px) {
+        .subCategory .resources_class a {
+            margin-left: 20px;
+        }
+
+        .category {
+            margin-top: 20px;
+        }
+
+        @media (max-width: 768px) {
             .category {
-                flex: 1 1 100%;
+                width: 100%;
             }
-        }
-
-        .cat-w100 {
-            flex: 1 1 100% !important;
         }
     </style>
 </head>
@@ -184,7 +159,7 @@
                     <option value="<%= topic %>">
                         <%= topic %>
                     </option>
-                    <% }) %>
+                <% }) %>
             </select>
             <button type="submit">Start Quiz</button>
         </form>
@@ -219,54 +194,49 @@
 
                 <div class="category">
                     <h4>Java</h4>
-
                     <div class="resources_class">
                         <a href="/quiz/resources/java/sdkman">SDKMAN!</a>
                     </div>
-
                 </div>
+
                 <div class="category">
                     <h4>Data Interchange Formats</h4>
-
                     <div class="resources_class">
                         <a href="/quiz/resources/dif">XML and JSON</a>
                     </div>
                 </div>
+
                 <div class="category">
                     <h4>Transformation</h4>
-
                     <div class="resources_class">
                         <a href="/quiz/resources/xslt">XSLT</a>
                     </div>
                 </div>
-                <div class="category">
-                    <h4>database management systems.</h4>
 
+                <div class="category">
+                    <h4>Database Management Systems</h4>
                     <div class="resources_class">
                         <a href="/quiz/resources/sql">SQL</a>
                     </div>
                 </div>
 
-                <div class="category cat-w100">
+                <div class="category">
                     <h4>Web Development Framework</h4>
-
                     <div class="resources_class">
                         <a href="/quiz/resources/struts">Struts</a>
                     </div>
                     <div class="subCategory">
-                        <h4>Java Script Frameworks</h4>
-
-                        <div class="resources_class subCat">
+                        <h4>JavaScript Frameworks</h4>
+                        <div class="resources_class">
                             <a href="/quiz/resources/react">React</a>
                         </div>
-                        <div class="resources_class subCat">
+                        <div class="resources_class">
                             <a href="/quiz/resources/nodejs">Node JS</a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
     </div>
 </body>
 
